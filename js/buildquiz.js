@@ -5,7 +5,7 @@ function buildQuiz(){
 
     // initialize questions element
     output.push(
-        `<div id="questions">`
+        `<div id="questions" class="questions">`
     );
 
     // for each question
@@ -30,8 +30,10 @@ function buildQuiz(){
 
             // add this question and its answer to the output
             output.push(
-                `<div class="question"> ${currentQuestion.question} </div>
-                <div class="answers"> ${answers.join('')} </div>`
+                `<div class="slide">
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join('')} </div>
+                </div>`
             );
         }
     );
@@ -41,7 +43,13 @@ function buildQuiz(){
         `</div>`
     );
 
-    // append button
+    // append navigation buttons
+    output.push(
+        `<button id="previous">Previous question</button>
+        <button id="next">Next Question</button>`
+    );
+
+    // append submission button
     output.push(
         `<button id="submit">Submit Quiz</button>`
     );
