@@ -1,6 +1,12 @@
 function buildQuiz(){
+    
     // variable to store the HTML output 
     const output = [];
+
+    // initialize quiz element
+    output.push(
+        `<div id="questions"></div>`
+    );
 
     // for each question
     myQuestions.forEach(
@@ -30,20 +36,36 @@ function buildQuiz(){
         }
     );
 
+    // append button
+    output.push(
+        `<button id="submit">Submit Quiz</button>`
+    );
+
+    // append results section
+    output.push(
+        `<div id="results"></div>`
+    );
+
     // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('')
 }
 
 function showResults(){}
 
-// variables
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+
 
 // load quiz
-requirejs(["../quizcontent/quiz1.js"], function(insertquiz) {
-    buildQuiz();
-});
+requirejs([quizContainer.getAttribute('file')], function(insertquiz) {
 
-submitButton.addEventListener('click', showResults);
+    // build quiz
+    buildQuiz();
+
+    // variables
+    const questionsContainer = document.getElementById('questions');
+    const resultsContainer = document.getElementById('results');
+    const submitButton = document.getElementById('submit');
+
+    // add event listener for button    
+    submitButton.addEventListener('click', showResults);
+
+});
