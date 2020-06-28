@@ -1,4 +1,6 @@
-function showResults(){
+export { showResults as default };
+
+function showResults(questions){
 
     // get some elements
     const questionsContainer = document.getElementById('questions');
@@ -11,7 +13,7 @@ function showResults(){
     let numCorrect = 0;
 
     // for each question
-    myQuestions.forEach( (currentQuestion, questionNumber) => {
+    questions.forEach( (currentQuestion, questionNumber) => {
 
         // find selected answer
         const answerContainer = answerContainers[questionNumber];
@@ -39,7 +41,7 @@ function showResults(){
     });
 
     // show the number of correct answers out of the total number of questions
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
 
 
 }

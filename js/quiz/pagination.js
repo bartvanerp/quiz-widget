@@ -1,3 +1,6 @@
+export { showSlide, showNextSlide, showPreviousSlide, currentSlide };
+
+
 // variables
 let currentSlide = 0;
 
@@ -58,6 +61,7 @@ function showNextSlide(){
     showSlide(currentSlide + 1);
 
 }
+
 
 function showPreviousSlide(){
 

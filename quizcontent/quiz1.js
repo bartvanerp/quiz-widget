@@ -1,4 +1,4 @@
-const myQuestions = [
+const questions = [
     {
       question: "Who invented JavaScript?",
       answers: {
@@ -28,3 +28,7 @@ const myQuestions = [
       correctAnswer: "d"
     }
   ];
+
+const options = {
+  shuffleQuestions: true
+};

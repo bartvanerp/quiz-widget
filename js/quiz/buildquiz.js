@@ -1,5 +1,9 @@
-function buildQuiz(){
-    
+export { buildQuiz as default };
+
+import shuffle from "/js/utils/shuffle.js"
+
+function buildQuiz(questions, options){
+
     // variable to store the HTML output 
     const output = [];
 
@@ -7,6 +11,14 @@ function buildQuiz(){
     output.push(
         `<div id="questions" class="questions">`
     );
+
+    // shuffle array if desired
+    if (options.shuffleQuestions === true){
+        var myQuestions = shuffle(questions);
+    }
+    else{
+        var myQuestions = questions;
+    }
 
     // for each question
     myQuestions.forEach(
@@ -16,7 +28,7 @@ function buildQuiz(){
             const answers = [];
 
             // and for each available answer...
-            for(letter in currentQuestion.answers){
+            for (var letter in currentQuestion.answers) {
                 
                 // ... add an HTML radio button
                 answers.push(
@@ -61,4 +73,8 @@ function buildQuiz(){
 
     // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('')
+
+    // return (shuffled) questions
+    return myQuestions
+
 }

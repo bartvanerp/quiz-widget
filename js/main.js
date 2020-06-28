@@ -1,8 +1,14 @@
-// load quiz
-requirejs(["js/buildquiz.js", "js/pagination.js", "js/showresults.js", quizContainer.getAttribute('file')], function(insertQuiz) {
+// import functions
+import buildQuiz from "./quiz/buildquiz.js"
+import showResults from "./quiz/showresults.js"
+import { showSlide, showNextSlide, showPreviousSlide, currentSlide } from "./quiz/pagination.js"
+    
+// fetch path of quiz and load questions and options
+const quizPath = "../quizcontent/"+document.getElementById('quizContainer').getAttribute("file")
+requirejs([quizPath], function(){
 
     // build quiz
-    buildQuiz();
+    var implemented_questions = buildQuiz(questions, options);
 
     // set and show current slide
     showSlide(currentSlide)
@@ -13,8 +19,7 @@ requirejs(["js/buildquiz.js", "js/pagination.js", "js/showresults.js", quizConta
     const previousButton = document.getElementById('previous');
 
     // add event listener for button to display results 
-    submitButton.addEventListener('click', showResults);
+    submitButton.addEventListener('click', function(){showResults(implemented_questions)});
     nextButton.addEventListener('click', showNextSlide);
     previousButton.addEventListener('click', showPreviousSlide);
-    
 });
