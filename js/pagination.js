@@ -19,15 +19,19 @@ function showSlide(n){
     // update current slide number
     currentSlide = n;
 
-    // if on the first page, do not show previous button
+    // if on the first page, disable previous button
     if (currentSlide === 0){
 
-        previousButton.style.display = "none";
+        previousButton.disabled = true;
+        previousButton.style.display = "inline-block";
+        previousButton.style.backgroundColor = "lightgrey";
 
     }
     else{
 
         previousButton.style.display = "inline-block";
+        previousButton.disabled = false;
+        previousButton.style.backgroundColor = "#279";
 
     }
 
