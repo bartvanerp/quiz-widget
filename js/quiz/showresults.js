@@ -1,5 +1,7 @@
 export { showResults as default };
 
+import { updateProgressBarSubmitted  } from "/js/quiz/progressbar.js"
+
 function showResults(questions){
 
     // get some elements
@@ -42,6 +44,9 @@ function showResults(questions){
 
     // show the number of correct answers out of the total number of questions
     resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
+
+    // fill progress bar
+    updateProgressBarSubmitted(questions.length)
 
 
 }

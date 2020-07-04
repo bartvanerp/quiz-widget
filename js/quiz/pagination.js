@@ -1,5 +1,6 @@
 export { showSlide, showNextSlide, showPreviousSlide, currentSlide };
 
+import { updateProgressBarNext } from "/js/quiz/progressbar.js"
 
 // variables
 let currentSlide = 0;
@@ -51,6 +52,9 @@ function showSlide(n){
         submitButton.style.display = "none";
 
     }
+
+    // update progress bar
+    updateProgressBarNext(n, slides.length-1)
 
 }
 

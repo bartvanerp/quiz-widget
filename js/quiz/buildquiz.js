@@ -71,6 +71,13 @@ function buildQuiz(questions, options){
         `<div id="results"></div>`
     );
 
+    // append progress bar
+    output.push(
+        `<div class="progress">
+            <div id="progressbar" class="progress-bar progress-bar-striped progress-bar" submitted=false role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax=${myQuestions.length} style="width: 75%"></div>
+        </div>`
+    );
+
     // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('')
 

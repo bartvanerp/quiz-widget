@@ -5,9 +5,11 @@ body{
 }
 .question{
 	font-weight: 600;
+	margin-bottom: 20px;
 }
 .answers {
-  	margin-bottom: 20px;
+	  margin-bottom: 20px;
+	  margin-left: 10px;
 }
 .answers label{
   	display: block;
@@ -27,8 +29,15 @@ body{
 }
 .questions{
 	position: relative;
-	height: 200px;
+	min-height: 200px;
 	margin-top: 40px;
+}
+.quizContainer{
+	max-width: 800px;
+	text-align: center;
+}
+.progress{
+	margin: 10px 10px 10px 10px;
 }
 button{
 	font-family: sans-serif;
