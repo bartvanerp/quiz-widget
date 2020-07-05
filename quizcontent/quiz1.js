@@ -1,10 +1,11 @@
-const questions = [
+var questions = [
     {
       question: "Who invented JavaScript?",
       answers: {
         a: "Douglas Crockford",
         b: "Sheryl Sandberg",
-        c: "Brendan Eich"
+        c: "Brendan Eich a",
+        d: "$ 1 + \\phi = \\pi $"
       },
       correctAnswer: "c"
     },
@@ -13,7 +14,7 @@ const questions = [
       answers: {
         a: "Node.js",
         b: "TypeScript",
-        c: "npm"
+        c: "$$ \\frac{1}{\pi} $$"
       },
       correctAnswer: "c"
     },

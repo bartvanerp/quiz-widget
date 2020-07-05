@@ -55,7 +55,7 @@ function showSlide(n){
 
     // update progress bar
     updateProgressBarNext(n, slides.length-1)
-
+    
 }
 
 
