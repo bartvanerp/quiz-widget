@@ -5,7 +5,7 @@ import parseQuiz from "../js/quiz/parsequiz.js"
 import { showSlide, showNextSlide, showPreviousSlide, currentSlide } from "../js/quiz/pagination.js"
     
 // fetch path of quiz and load questions and options
-const quizPath = "../quizcontent/"+document.getElementById('quizContainer').getAttribute("file")
+const quizPath = "./quizcontent/"+document.getElementById('quizContainer').getAttribute("file")
 requirejs([quizPath], function(){
 
     // parse questions
