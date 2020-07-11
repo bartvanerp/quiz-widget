@@ -26,7 +26,7 @@ requirejs([quizPath], function(){
     const previousButton = document.getElementById('previous');
 
     // add event listener for button to display results 
-    submitButton.addEventListener('click', function(){showResults(implemented_questions)});
+    submitButton.addEventListener('click', function(){showResults(implemented_questions, options)});
     nextButton.addEventListener('click', showNextSlide);
     previousButton.addEventListener('click', showPreviousSlide);
 

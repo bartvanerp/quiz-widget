@@ -48,5 +48,7 @@ var questions = [
   ];
 
 const options = {
-  shuffleQuestions: true
+  shuffleQuestions: false,
+  shuffleAnswers: true,
+  confetti: true
 };
