@@ -1,6 +1,7 @@
 export { showResults as default };
 
-import { updateProgressBarSubmitted  } from "../quiz/progressbar.js"
+import { updateProgressBarSubmitted } from "../quiz/progressbar.js"
+import { StartConfetti, DeactivateConfetti } from "../utils/confetti.js"
 
 function showResults(questions){
 
@@ -48,5 +49,11 @@ function showResults(questions){
     // fill progress bar
     updateProgressBarSubmitted(questions.length)
 
+    // if 100% correct, CONFETTI
+    if (numCorrect === questions.length){
+        StartConfetti();
+        setTimeout(function(){
+            DeactivateConfetti();
+        }, 1500);    }
 
 }
