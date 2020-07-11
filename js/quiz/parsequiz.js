@@ -1,7 +1,7 @@
 export { parseQuiz as default}
 
-import searchAll from "/js/utils/searchall.js"
-import replaceAll from "/js/utils/replaceall.js"
+import searchAll from "../utils/searchall.js"
+import replaceAll from "../utils/replaceall.js"
 
 
 function parseQuiz(questions){

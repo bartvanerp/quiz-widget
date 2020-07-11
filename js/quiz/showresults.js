@@ -1,6 +1,6 @@
 export { showResults as default };
 
-import { updateProgressBarSubmitted  } from "/js/quiz/progressbar.js"
+import { updateProgressBarSubmitted  } from "./progressbar.js"
 
 function showResults(questions){
 

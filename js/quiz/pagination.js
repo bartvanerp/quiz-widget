@@ -1,6 +1,6 @@
 export { showSlide, showNextSlide, showPreviousSlide, currentSlide };
 
-import { updateProgressBarNext } from "/js/quiz/progressbar.js"
+import { updateProgressBarNext } from "./progressbar.js"
 
 // variables
 let currentSlide = 0;

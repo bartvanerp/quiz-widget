@@ -1,6 +1,6 @@
 export { buildQuiz as default };
 
-import shuffle from "/js/utils/shuffle.js"
+import shuffle from "../utils/shuffle.js"
 
 function buildQuiz(questions, options){
 
