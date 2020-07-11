@@ -1,8 +1,8 @@
 // import functions
-import buildQuiz from "./quiz/buildquiz.js"
-import showResults from "./quiz/showresults.js"
-import parseQuiz from "./quiz/parsequiz.js"
-import { showSlide, showNextSlide, showPreviousSlide, currentSlide } from "./quiz/pagination.js"
+import buildQuiz from "../js/quiz/buildquiz.js"
+import showResults from "../js/quiz/showresults.js"
+import parseQuiz from "../js/quiz/parsequiz.js"
+import { showSlide, showNextSlide, showPreviousSlide, currentSlide } from "../js/quiz/pagination.js"
     
 // fetch path of quiz and load questions and options
 const quizPath = "../quizcontent/"+document.getElementById('quizContainer').getAttribute("file")

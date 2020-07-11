@@ -1,6 +1,6 @@
 export { replaceAll as default }
 
-import numberOfOccurences from "./numberofoccurences.js"
+import numberOfOccurences from "../utils/numberofoccurences.js"
 
 function replaceAll(str, find, replace){
 
