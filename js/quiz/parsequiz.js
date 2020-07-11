@@ -1,8 +1,23 @@
-export { parseQuiz as default }
+export { parseQuiz as default}
 
 import searchAll from "/js/utils/searchall.js"
+import replaceAll from "/js/utils/replaceall.js"
 
-function parseQuiz(element){
+
+function parseQuiz(questions){
+
+    // parse variables into questions and answers
+    questions = parseVariables(questions)
+
+    // parse inline LaTeX ( convert $...$ delimiters to \(...\) )
+    questions = parseLaTeX(questions)
+
+    // return parsed questions
+    return questions
+}
+
+
+function parseLaTeX(element){
 
     // if current element is a string...
     if (typeof(element) === "string") {
@@ -12,6 +27,21 @@ function parseQuiz(element){
 
     }
 
+    // if current element is a number...
+    if (typeof(element) === "number") {
+
+        // return number
+        return element
+
+    }
+
+    // if current element is a function...
+    if (typeof(element) === "function") {
+
+        // return function
+        return element
+
+    }
 
     // if current element is array...
     if (Array.isArray(element)){
@@ -23,7 +53,7 @@ function parseQuiz(element){
         element.forEach(function (item, index) {
 
             // ...and parse elements
-            newArray.push(parseQuiz(item));
+            newArray.push(parseLaTeX(item));
 
         });
 
@@ -43,7 +73,7 @@ function parseQuiz(element){
         for (var [key, value] of Object.entries(element)) {
 
             // ...and parse values
-            newObject[key] = parseQuiz(value);
+            newObject[key] = parseLaTeX(value);
 
         }
 
@@ -197,4 +227,33 @@ function inlineMath(str){
 
     return newString;
     
+}
+
+
+function parseVariables(questions){
+
+    // loop through questions
+    questions.forEach(function (item, item_ind) {
+
+        // check if question has variables property
+        if (item.hasOwnProperty("variables")){
+
+            // loop through known variables...
+            for (var [key, value] of Object.entries(item.variables)) {
+                
+                // ...and substitute corresponding values in question...
+                item.question = replaceAll(item.question, "<"+key+">", value);
+
+                // ...and answers
+                for (var [answer_key, answer_value] of Object.entries(item.answers)) {
+                    item.answers[answer_key] = replaceAll(answer_value, "<"+key+">", value);
+                }
+            }
+        
+        }
+
+    });
+
+    return questions;
+
 }

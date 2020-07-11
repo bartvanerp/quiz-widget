@@ -14,7 +14,7 @@ var questions = [
       answers: {
         a: "Node.js",
         b: "TypeScript",
-        c: "$$ \\frac{1}{\pi} $$"
+        c: "$$ \\frac{1}{\\pi} $$"
       },
       correctAnswer: "c"
     },
@@ -27,6 +27,23 @@ var questions = [
         d: "ESLint"
       },
       correctAnswer: "d"
+    },
+    {
+      question: "James has <x> apple(s). Emma gives him <y> apple(s). How many apples does James have?",
+      answers: {
+        a: "<x> apple(s)",
+        b: "<y> apple(s)",
+        c: "<z> apple(s)",
+        d: "<z> pear(s)"
+      },
+      correctAnswer: "c",
+      variables: (function() {
+        var vars = {};
+        vars["x"] = Math.round(10*Math.random());
+        vars["y"] = Math.round(10*Math.random());
+        vars["z"] = vars["x"] + vars["y"];
+        return vars
+      }())
     }
   ];
 
