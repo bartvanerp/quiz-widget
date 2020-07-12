@@ -24,7 +24,7 @@ function showResults(questions, options){
         const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
         // if answer is correct
-        if (userAnswer === currentQuestion.correctAnswer){
+        if (userAnswer == currentQuestion.correctAnswer){
         
             // add to the number of correct answers
             numCorrect++

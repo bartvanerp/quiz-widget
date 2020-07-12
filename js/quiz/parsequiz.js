@@ -15,7 +15,7 @@ function parseQuiz(questions, options){
     questions = shuffleQuestions(questions, options)
 
     // shuffle answers
-
+    questions = shuffleAnswers(questions, options)
 
     // parse variables into questions and answers
     questions = parseVariables(questions)
@@ -81,6 +81,49 @@ function shuffleQuestions(questions, options){
 
     }
     // if questions are not desired to be shuffled...
+    else{
+        
+        // ... just return questions
+        return questions
+    
+    }
+
+}
+
+
+// This function randomly shuffles the answers in multiple-choice questions.
+function shuffleAnswers(questions, options){
+
+    // if answers are desired to be shuffled...
+    if (options.shuffleAnswers === true){
+
+        // ...loop through questions
+        questions.forEach(
+            (currentQuestion, questionNumber) => {
+
+                // check if current question is multiple-choice
+                if (currentQuestion.type === "multiple-choice"){
+
+                    // get random ordering
+                    var ordering = randomPermutation(Object.keys(currentQuestion.answers).length);
+
+                    // get new correct answer
+                    currentQuestion.correctAnswer = ordering.indexOf(currentQuestion.correctAnswer-1)+1;
+
+                    // shuffle answers
+                    currentQuestion.answers = Object.fromEntries(
+                        ordering.map((i,ind) => [ind+1, currentQuestion.answers[i+1]])
+                    );
+
+                }
+
+        });
+
+        // return questions
+        return questions
+
+    }
+    // if answers are not desired to be shuffled...
     else{
         
         // ... just return questions

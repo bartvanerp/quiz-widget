@@ -3,44 +3,44 @@ var questions = [
       type: "multiple-choice",
       question: "Who invented JavaScript?",
       answers: {
-        a: "Douglas Crockford",
-        b: "Sheryl Sandberg",
-        c: "Brendan Eich a",
-        d: "$ 1 + \\phi = \\pi $"
+        1: "Douglas Crockford",
+        2: "Sheryl Sandberg",
+        3: "Brendan Eich a",
+        4: "$ 1 + \\phi = \\pi $"
       },
-      correctAnswer: "c"
+      correctAnswer: 3
     },
     {
       type: "multiple-choice",
       question: "Which one of these is a JavaScript package manager?",
       answers: {
-        a: "Node.js",
-        b: "TypeScript",
-        c: "$$ \\frac{1}{\\pi} $$"
+        1: "Node.js",
+        2: "TypeScript",
+        3: "$$ \\frac{1}{\\pi} $$"
       },
-      correctAnswer: "c"
+      correctAnswer: 3
     },
     {
       type: "multiple-choice",
       question: "Which tool can you use to ensure code quality?",
       answers: {
-        a: "Angular",
-        b: "jQuery",
-        c: "RequireJS",
-        d: "ESLint"
+        1: "Angular",
+        2: "jQuery",
+        3: "RequireJS",
+        4: "ESLint"
       },
-      correctAnswer: "d"
+      correctAnswer: 4
     },
     {
       type: "multiple-choice",
       question: "James has <x> apple(s). Emma gives him <y> apple(s). How many apples does James have?",
       answers: {
-        a: "<x> apple(s)",
-        b: "<y> apple(s)",
-        c: "<z> apple(s)",
-        d: "<z> pear(s)"
+        1: "<x> apple(s)",
+        2: "<y> apple(s)",
+        3: "<z> apple(s)",
+        4: "<z> pear(s)"
       },
-      correctAnswer: "c",
+      correctAnswer: 3,
       variables: (function() {
         var vars = {};
         vars["x"] = Math.round(10*Math.random());
