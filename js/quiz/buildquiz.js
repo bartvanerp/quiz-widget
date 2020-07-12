@@ -12,16 +12,8 @@ function buildQuiz(questions, options){
         `<div id="questions" class="questions">`
     );
 
-    // shuffle array if desired
-    if (options.shuffleQuestions === true){
-        var myQuestions = shuffle(questions);
-    }
-    else{
-        var myQuestions = questions;
-    }
-
     // for each question
-    myQuestions.forEach(
+    questions.forEach(
         (currentQuestion, questionNumber) => {
 
             // variable to store the list of possible answers
@@ -74,7 +66,7 @@ function buildQuiz(questions, options){
     // append progress bar
     output.push(
         `<div class="progress">
-            <div id="progressbar" class="progress-bar progress-bar-striped progress-bar" submitted=false role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax=${myQuestions.length} style="width: 0%">
+            <div id="progressbar" class="progress-bar progress-bar-striped progress-bar" submitted=false role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax=${questions.length} style="width: 0%">
                 <span class="progress-percentage">0% complete</span>
             </div>
         </div>`
@@ -87,8 +79,5 @@ function buildQuiz(questions, options){
 
     // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('')
-
-    // return (shuffled) questions
-    return myQuestions
 
 }

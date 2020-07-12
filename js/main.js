@@ -9,10 +9,10 @@ const quizPath = "./quizcontent/"+document.getElementById('quizContainer').getAt
 requirejs([quizPath], function(){
 
     // parse questions
-    questions = parseQuiz(questions)
+    questions = parseQuiz(questions, options)
 
     // build quiz
-    var implemented_questions = buildQuiz(questions, options);
+    buildQuiz(questions, options);
 
     // set and show current slide
     showSlide(currentSlide)
@@ -26,7 +26,7 @@ requirejs([quizPath], function(){
     const previousButton = document.getElementById('previous');
 
     // add event listener for button to display results 
-    submitButton.addEventListener('click', function(){showResults(implemented_questions, options)});
+    submitButton.addEventListener('click', function(){showResults(questions, options)});
     nextButton.addEventListener('click', showNextSlide);
     previousButton.addEventListener('click', showPreviousSlide);
 

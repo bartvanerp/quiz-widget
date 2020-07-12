@@ -1,5 +1,6 @@
 var questions = [
     {
+      type: "multiple-choice",
       question: "Who invented JavaScript?",
       answers: {
         a: "Douglas Crockford",
@@ -10,6 +11,7 @@ var questions = [
       correctAnswer: "c"
     },
     {
+      type: "multiple-choice",
       question: "Which one of these is a JavaScript package manager?",
       answers: {
         a: "Node.js",
@@ -19,6 +21,7 @@ var questions = [
       correctAnswer: "c"
     },
     {
+      type: "multiple-choice",
       question: "Which tool can you use to ensure code quality?",
       answers: {
         a: "Angular",
@@ -29,6 +32,7 @@ var questions = [
       correctAnswer: "d"
     },
     {
+      type: "multiple-choice",
       question: "James has <x> apple(s). Emma gives him <y> apple(s). How many apples does James have?",
       answers: {
         a: "<x> apple(s)",
@@ -48,7 +52,8 @@ var questions = [
   ];
 
 const options = {
-  shuffleQuestions: false,
+  shuffleQuestions: true,
   shuffleAnswers: true,
+  select: "all",
   confetti: true
 };

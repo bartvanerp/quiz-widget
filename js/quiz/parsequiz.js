@@ -1,10 +1,21 @@
 export { parseQuiz as default}
 
 import searchAll from "../utils/searchall.js"
+import shuffle from "../utils/shuffle.js"
 import replaceAll from "../utils/replaceall.js"
+import randomPermutation from "../utils/randompermutation.js"
 
+// This function parses the quiz questions according to the specified options.
+function parseQuiz(questions, options){
 
-function parseQuiz(questions){
+    // select questions
+    questions = selectQuestions(questions, options)
+
+    // shuffle questions
+    questions = shuffleQuestions(questions, options)
+
+    // shuffle answers
+
 
     // parse variables into questions and answers
     questions = parseVariables(questions)
@@ -14,9 +25,103 @@ function parseQuiz(questions){
 
     // return parsed questions
     return questions
+
 }
 
 
+// This function randomly selects all/a subset of the provided questions.
+function selectQuestions(questions, options){
+
+    // if all questions should be in the quiz...
+    if (options.select === "all") {
+
+        // return all questions
+        return questions
+
+    }
+    // if a specific number of questions should be in the quiz...
+    else if (typeof(options.select) === "number") {
+
+        // check if desired number is actually valid
+        if (options.select <= questions.length) {
+
+            // return {selection} questions
+            var selection = randomPermutation(questions.length).slice(0,options.select).sort();
+            return selection.map(i => questions[i])
+            
+        }
+        else {
+
+            // give warning
+            console.log("WARNING: Desired number of questions to select exceeds total number of available questions. All questions are now used.");
+
+            // return all questions
+            return questions
+
+        }
+
+    }
+    else {
+
+        // throw error
+        throw "Select option is invalid. It neither represents 'all' or a number."
+
+    }
+}
+
+
+// This function randomly shuffles the questions if desired.
+function shuffleQuestions(questions, options){
+
+    // if questions are desired to be shuffled...
+    if (options.shuffleQuestions === true){
+
+        // ...return shuffled questions
+        return shuffle(questions)
+
+    }
+    // if questions are not desired to be shuffled...
+    else{
+        
+        // ... just return questions
+        return questions
+    
+    }
+
+}
+
+
+// This function replaces the parameters in between <> with their corresponding values as defined in the quiz layout.
+function parseVariables(questions){
+
+    // loop through questions
+    questions.forEach(function (item, item_ind) {
+
+        // check if question has variables property
+        if (item.hasOwnProperty("variables")){
+
+            // loop through known variables...
+            for (var [key, value] of Object.entries(item.variables)) {
+                
+                // ...and substitute corresponding values in question...
+                item.question = replaceAll(item.question, "<"+key+">", value);
+
+                // ...and answers
+                for (var [answer_key, answer_value] of Object.entries(item.answers)) {
+                    item.answers[answer_key] = replaceAll(answer_value, "<"+key+">", value);
+                }
+            }
+        
+        }
+
+    });
+
+    return questions;
+
+}
+
+
+// This function finds all strings in the questions object.
 function parseLaTeX(element){
 
     // if current element is a string...
@@ -85,6 +190,7 @@ function parseLaTeX(element){
 }
 
 
+// This function processes the string.
 function processString(str){
     
     // check if string contains $ character
@@ -97,6 +203,7 @@ function processString(str){
 }
 
 
+// This functions converts single $...$ deliters to \(...\) for MathJax.
 function inlineMath(str){
 
     // remove whitespaces from string
@@ -227,33 +334,4 @@ function inlineMath(str){
 
     return newString;
     
-}
-
-
-function parseVariables(questions){
-
-    // loop through questions
-    questions.forEach(function (item, item_ind) {
-
-        // check if question has variables property
-        if (item.hasOwnProperty("variables")){
-
-            // loop through known variables...
-            for (var [key, value] of Object.entries(item.variables)) {
-                
-                // ...and substitute corresponding values in question...
-                item.question = replaceAll(item.question, "<"+key+">", value);
-
-                // ...and answers
-                for (var [answer_key, answer_value] of Object.entries(item.answers)) {
-                    item.answers[answer_key] = replaceAll(answer_value, "<"+key+">", value);
-                }
-            }
-        
-        }
-
-    });
-
-    return questions;
-
 }
