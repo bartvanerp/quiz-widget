@@ -24,10 +24,10 @@ function buildQuiz(questions, options){
                 
                 // ... add an HTML radio button
                 answers.push(
-                    `<label>
-                        <input type="radio" name="question${questionNumber}" value="${letter}">
-                        ${letter} :
-                        ${currentQuestion.answers[letter]}
+                    `<label class="answer">
+                        <span class="answer-text">${currentQuestion.answers[letter]}</span>
+                        <input type="radio" class="answer-button" name="question${questionNumber}" value="${letter}">
+                        <span class="checkmark"></span>
                     </label>`
                 );
             }
@@ -35,8 +35,11 @@ function buildQuiz(questions, options){
             // add this question and its answer to the output
             output.push(
                 `<div class="slide">
+                    <div class="question-nr"> <span> Question ${questionNumber+1} </span> </div>
                     <div class="question"> ${currentQuestion.question} </div>
+                    <div class="border-gradient"></div>
                     <div class="answers"> ${answers.join('')} </div>
+                    <div class="solution"></div>
                 </div>`
             );
         }
