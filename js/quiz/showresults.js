@@ -9,6 +9,13 @@ function showResults(questions, options){
     const questionsContainer = document.getElementById('questions');
     const resultsContainer = document.getElementById('results');
 
+    // lock buttons
+    const buttons = questionsContainer.querySelectorAll('.answer-button');
+    buttons.forEach( ( currentButton ) => {
+        currentButton.disabled = true;
+    });
+
+
     // gather answer containers from our quiz
     const answerContainers = questionsContainer.querySelectorAll('.answers');
 
