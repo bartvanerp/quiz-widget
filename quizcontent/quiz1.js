@@ -1,35 +1,46 @@
 var questions = [
     {
       type: "multiple-choice",
-      question: "Who invented JavaScript?",
+      question: "What is the current-voltage relationship through a resistor of value $R$?",
       answers: {
-        1: "Douglas Crockford",
-        2: "Sheryl Sandberg",
-        3: "Brendan Eich a",
-        4: "$ 1 + \\phi = \\pi $"
+        1: "$I = UR^2$",
+        2: "$V = IR^2$",
+        3: "$I = \\frac{V}{R}$",
+        4: "$I = \\frac{R}{V}$"
       },
       correctAnswer: 3
     },
     {
       type: "multiple-choice",
-      question: "Which one of these is a JavaScript package manager?",
+      question: "A signal is sampled with a sample frequency of $f_s=<fs>$ Hz. The highest frequency contained in the signal is $<f>$ Hz. To what relative frequency does the highest frequency map?",
       answers: {
-        1: "Node.js",
-        2: "TypeScript",
-        3: "$$ \\frac{1}{\\pi} $$"
+        1: "$\\theta = <ans>\\pi$",
+        2: "$\\theta = <ansx1>\\pi$",
+        3: "$\\theta = <ansx2>\\pi$",
+        4: "$\\theta = <ansx3>\\pi$"
       },
-      correctAnswer: 3
+      correctAnswer: 1,
+      variables: (function() {
+        var vars = {};
+        vars["f"] = 10*(Math.round(100*Math.random())+1);
+        vars["fs"] = 10*Math.round(100*Math.random())+2*vars["f"];
+        vars["ans"] = Math.round(100*2*vars["f"]/vars["fs"])/100;
+        vars["ansx1"] = Math.round(100*Math.PI*2*vars["f"]/vars["fs"])/100
+        vars["ansx2"] = Math.round(100*2*Math.PI*vars["fs"]/vars["f"])/100
+        vars["ansx3"] = Math.round(100*2*vars["fs"]/vars["f"])/100
+        return vars
+      }())
     },
     {
       type: "multiple-choice",
-      question: "Which tool can you use to ensure code quality?",
+      question: "How can the complex number $\\sqrt{j}$ also be represented?",
       answers: {
-        1: "Angular",
-        2: "jQuery",
-        3: "RequireJS",
-        4: "ESLint"
+        1: "$e^{j\\pi/4}$",
+        2: "$e^{-j\\pi/4}$",
+        3: "$e^{j3\\pi/4}$",
+        4: "$e^{-j3\\pi/4}$"
       },
-      correctAnswer: 4
+      correctAnswer: 1
     },
     {
       type: "multiple-choice",
@@ -43,8 +54,8 @@ var questions = [
       correctAnswer: 3,
       variables: (function() {
         var vars = {};
-        vars["x"] = Math.round(10*Math.random());
-        vars["y"] = Math.round(10*Math.random());
+        vars["x"] = Math.round(10*Math.random())+1;
+        vars["y"] = Math.round(10*Math.random())+1;
         vars["z"] = vars["x"] + vars["y"];
         return vars
       }())

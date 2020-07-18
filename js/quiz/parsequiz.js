@@ -264,8 +264,6 @@ function inlineMath(str){
     // set leftright indicator (true => right, false => left)
     var leftright = true
 
-    console.log(inds)
-
     // check if preceded or followed by another $
     inds.forEach( function (ind, indInd) {
         
