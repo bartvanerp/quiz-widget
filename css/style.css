@@ -4,6 +4,7 @@ body{
 	color: #333;
 }
 .quizContainer{
+	position: relative;
 	max-width: 700px;
 	text-align: center;
 	margin: 30px 30px 30px 30px;
