@@ -3,7 +3,7 @@ var questions = [
       type: "multiple-choice",
       question: "What is the current-voltage relationship through a resistor of value $R$?",
       answers: {
-        1: "$I = UR^2$",
+        1: "$I = VR^2$",
         2: "$V = IR^2$",
         3: "$I = \\frac{V}{R}$",
         4: "$I = \\frac{R}{V}$"
