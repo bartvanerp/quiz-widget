@@ -264,8 +264,10 @@ function inlineMath(str){
     // set leftright indicator (true => right, false => left)
     var leftright = true
 
+    console.log(inds)
+
     // check if preceded or followed by another $
-    inds.forEach( function (ind, _) {
+    inds.forEach( function (ind, indInd) {
         
         // if character is at beginning of string and the length of the string is larger than 1...
         if ((ind == 0) && (str.length > 1)){
@@ -355,7 +357,12 @@ function inlineMath(str){
         else{
 
             // copy preceding characters
-            newString = newString.concat(str.slice(lastInd+1, ind));
+            if (indInd == 0){
+                newString = newString.concat(str.slice(lastInd, ind));
+            }
+            else{
+                newString = newString.concat(str.slice(lastInd+1, ind));
+            }
 
             // change left/right indicator
             leftright = !leftright;
@@ -370,6 +377,11 @@ function inlineMath(str){
 
             // update last index
             lastInd = ind;
+
+            // if last index, copy also the following text
+            if (indInd == inds.length-1){
+                newString = newString.concat(str.slice(lastInd+1, str.length));
+            }
 
         }
 
