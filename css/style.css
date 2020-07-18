@@ -13,12 +13,13 @@ body{
 	box-shadow: 2px 2px #eee;
 }
 .questions{
+	position: relative;
 	width: 100%;
 }
 .question-nr{
 	text-align: left;
 	font-weight: 700;
-	margin: 20px 0 0 20px;
+	margin: 0 0 0 20px;
 }
 .question{
 	text-align: left;
@@ -30,7 +31,8 @@ body{
 	margin: 5px 20px 20px 20px;
     border-radius: 1px;
     border-image-source: linear-gradient(to right, #bbb, #fff); 
-    border-image-slice: 1;}
+	border-image-slice: 1;
+}
 .answers {
 	text-align: left;
 	margin-bottom: 20px;
@@ -41,7 +43,7 @@ body{
 	left: 0px;
 	top: 0px;
 	width: 100%;
-	z-index: 1;
+	z-index: -1;
 	opacity: 0;
 	transition: opacity 0.5s;
 }
