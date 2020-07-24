@@ -1,6 +1,6 @@
 export { showResults as default };
 
-import { updateProgressBarSubmitted } from "../quiz/progressbar.js"
+import { updateProgressBarSubmitted } from "./progressbar.js"
 import { StartConfetti, DeactivateConfetti } from "../utils/confetti.js"
 
 function showResults(questions, options){

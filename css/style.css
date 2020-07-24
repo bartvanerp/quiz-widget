@@ -160,3 +160,22 @@ canvas{
 	border-radius: 50%;
 	background: white;
   }
+
+  .progress-container { 
+	  position: relative;
+	  width: 200px;
+	  height: 200px;
+  }
+  .pb-idle {
+	  fill: transparent;
+	  stroke: #aaa;
+  }
+  .pb-meter {
+	  fill: transparent;
+	  stroke: blue;
+	  stroke-width: 7px;
+	  transition-property: stroke-dashoffset;
+	  transition-duration: 1s;
+	  transition-timing-function: ease;
+	  transition-delay: 0s;
+  }
