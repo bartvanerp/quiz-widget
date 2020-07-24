@@ -163,19 +163,47 @@ canvas{
 
   .progress-container { 
 	  position: relative;
-	  width: 200px;
-	  height: 200px;
-  }
+	  width: 150px;
+	  height: 150px;
+	  text-align: center;
+	}
   .pb-idle {
+	position: absolute;
 	  fill: transparent;
-	  stroke: #aaa;
+	  stroke-width: 5px;
+	  stroke: #eee;
   }
   .pb-meter {
+	  position: absolute;
 	  fill: transparent;
-	  stroke: blue;
+	  stroke: rgb(15, 160, 206);
 	  stroke-width: 7px;
 	  transition-property: stroke-dashoffset;
 	  transition-duration: 1s;
 	  transition-timing-function: ease;
 	  transition-delay: 0s;
   }
+  .pb-text-wrapper{
+	position: absolute;
+	margin: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -55%);
+	white-space: nowrap;
+  }
+  .pb-text {
+	font-size: 45px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	color: rgb(15, 160, 206);
+	position: relative;
+	display: inline-block;
+}
+.pb-text-percent{
+	font-size: 25px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 900;
+	color: rgb(15, 160, 206);
+	position: relative;
+	display: inline-block;
+}

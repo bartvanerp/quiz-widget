@@ -68,11 +68,7 @@ function buildQuiz(questions, options){
 
     // append progress bar
     output.push(
-        `<div class="progress">
-            <div id="progressbar" class="progress-bar progress-bar-striped progress-bar" submitted=false role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax=${questions.length} style="width: 0%">
-                <span class="progress-percentage">0% complete</span>
-            </div>
-        </div>`
+        `<div class="progress-container"></div>`
     );
 
     // append confetti block
