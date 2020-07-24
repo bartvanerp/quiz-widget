@@ -66,5 +66,6 @@ const options = {
   shuffleQuestions: true,
   shuffleAnswers: true,
   select: "all",
+  showCorrectAnswer: true,
   confetti: true
 };

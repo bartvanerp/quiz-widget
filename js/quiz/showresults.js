@@ -37,14 +37,18 @@ function showResults(questions, options){
             numCorrect++
 
             // color the answer green
-            answerContainers[questionNumber].style.color = 'lightgreen';
+            answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
 
         }
         // else if the answer is wrong or blank
         else{
 
-            // color the answer red
-            answerContainers[questionNumber].style.color = 'red';
+            // color the answer button red
+            answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(235, 45, 57)";
+            
+            if (options.showCorrectAnswer == true){
+                answerContainer.querySelectorAll("span.checkmark")[currentQuestion.correctAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
+            }
             
         }
 
