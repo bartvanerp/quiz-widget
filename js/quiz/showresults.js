@@ -43,9 +43,18 @@ function showResults(questions, options){
         // else if the answer is wrong or blank
         else{
 
-            // color the answer button red
-            answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(235, 45, 57)";
-            
+            // color the answer button red if the answer is wrong
+            if (typeof(answerContainer.querySelectorAll("span.checkmark")[userAnswer-1]) !== "undefined"){
+                answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(235, 45, 57)";
+            }
+            // color all answers orange if no answer is submitted
+            else{
+                answerContainer.querySelectorAll("span.checkmark").forEach(checkmark => {
+                    checkmark.style.backgroundColor = "rgb(230, 140, 30)";
+                });
+            }
+
+            // color the correct answer green
             if (options.showCorrectAnswer == true){
                 answerContainer.querySelectorAll("span.checkmark")[currentQuestion.correctAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
             }
