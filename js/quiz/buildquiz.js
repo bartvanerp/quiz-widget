@@ -38,7 +38,7 @@ function buildQuiz(questions, options){
             // add this question and its answer to the output
             output.push(
                 `<div class="slide">
-                    <div class="question-nr">  <span> Question ${questionNumber+1}: </span> &nbsp&nbsp  &nbsp&nbsp (${numPoints}) </div>
+                    <div class="question-nr"> <span> Question ${questionNumber+1} </span> <span class="question-nr-pts"> ${numPoints} </span> </div>
                     <div class="question"> ${currentQuestion.question} </div>
                     <div class="border-gradient"></div>
                     <div class="answers"> ${answers.join('')} </div>

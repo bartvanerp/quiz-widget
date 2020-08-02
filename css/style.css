@@ -23,6 +23,11 @@ body{
 	font-weight: 700;
 	margin: 0 0 0 20px;
 }
+.question-nr-pts {
+	margin-right: 35px;
+	float: right;
+	font-weight: 300;
+}
 .question{
 	text-align: left;
 	margin: 5px 20px 5px 20px;
