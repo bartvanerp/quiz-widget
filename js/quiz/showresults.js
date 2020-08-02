@@ -26,8 +26,9 @@ function showResults(questions, options){
     // gather answer containers from our quiz
     const answerContainers = questionsContainer.querySelectorAll('.answers');
 
-    // keep track of user's answers
-    let numCorrect = 0;
+    // keep track of obtained and available points
+    let numPointsObtained = 0;
+    let numPointsAvailable = 0;
 
     // for each question
     questions.forEach( (currentQuestion, questionNumber) => {
@@ -37,11 +38,14 @@ function showResults(questions, options){
         const selector = `input[name=question${questionNumber}]:checked`;
         const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
+        // add to the number of available points
+        numPointsAvailable += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
+
         // if answer is correct
         if (userAnswer == currentQuestion.correctAnswer){
         
             // add to the number of correct answers
-            numCorrect++
+            numPointsObtained += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
 
             // color the answer green
             answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
@@ -70,15 +74,18 @@ function showResults(questions, options){
 
     });
 
+    // get total number of available points
+
+
     // show the number of correct answers out of the total number of questions
-    resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
+    resultsContainer.innerHTML = `${numPointsObtained} out of ${numPointsAvailable} points obtained`;
 
     // fill progress bar
     updateProgressBarSubmitted(questions.length)
 
     // if 100% correct, CONFETTI
     if (options.confetti){
-        if (numCorrect === questions.length){
+        if (numPointsObtained === numPointsAvailable){
             StartConfetti();
             setTimeout(function(){
                 DeactivateConfetti();

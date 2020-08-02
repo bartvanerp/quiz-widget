@@ -8,7 +8,8 @@ var questions = [
         3: "$I = \\frac{V}{R}$",
         4: "$I = \\frac{R}{V}$"
       },
-      correctAnswer: 3
+      correctAnswer: 3,
+      points: 1
     },
     {
       type: "multiple-choice",
@@ -20,6 +21,7 @@ var questions = [
         4: "$\\theta = <ansx3>\\pi$"
       },
       correctAnswer: 1,
+      points: 3,
       variables: (function() {
         var vars = {};
         vars["f"] = 10*(Math.round(100*Math.random())+1);
@@ -40,7 +42,8 @@ var questions = [
         3: "$e^{j3\\pi/4}$",
         4: "$e^{-j3\\pi/4}$"
       },
-      correctAnswer: 1
+      correctAnswer: 1,
+      points: 3
     },
     {
       type: "multiple-choice",
