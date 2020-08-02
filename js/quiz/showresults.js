@@ -9,11 +9,18 @@ function showResults(questions, options){
     const questionsContainer = document.getElementById('questions');
     const resultsContainer = document.getElementById('results');
 
+    // set quizcontainer to be submitted
+    document.getElementById('quizContainer').submitted = true;
+
     // lock buttons
     const buttons = questionsContainer.querySelectorAll('.answer-button');
     buttons.forEach( ( currentButton ) => {
         currentButton.disabled = true;
     });
+
+    // change submit button
+    document.getElementById("submit").disabled = true;
+    document.getElementById("submit").style.backgroundColor = "lightgrey";
 
 
     // gather answer containers from our quiz

@@ -45,31 +45,33 @@ function buildQuiz(questions, options){
         }
     );
 
+    // append results section
+    output.push(
+        `<div id="results"></div>`
+    );
+
     // end questions element
     output.push(
         `</div>`
     );
 
-    // append navigation buttons
-    output.push(
-        `<button id="previous">Previous question</button>
-        <button id="next">Next Question</button>`
-    );
+    // wrapper for buttons and progressbar
+    output.push(`<div class="buttons-wrapper">`);
 
-    // append submission button
+    // append navigation and submission buttons
     output.push(
-        `<button id="submit">Submit Quiz</button>`
-    );
-
-    // append results section
-    output.push(
-        `<div id="results"></div>`
+        `<button id="previous" class="button button-previous"><svg class="button-icon"><use xlink:href="svg/angle-left.svg#example"></use></svg> previous </button>
+        <button id="next" class="button button-next"> next <svg class="button-icon"><use xlink:href="svg/angle-right.svg#example"></use></svg></button>
+        <button id="submit" class="button button-submit"> submit </button>`
     );
 
     // append progress bar
     output.push(
         `<div class="progress-container"></div>`
     );
+
+    // end wrapper
+    output.push(`</div>`);
 
     // append confetti block
     output.push(

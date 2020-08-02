@@ -27,29 +27,37 @@ function showSlide(n){
     if (currentSlide === 0){
 
         previousButton.disabled = true;
-        previousButton.style.display = "inline-block";
         previousButton.style.backgroundColor = "lightgrey";
 
     }
     else{
 
-        previousButton.style.display = "inline-block";
         previousButton.disabled = false;
-        previousButton.style.backgroundColor = "#279";
+        previousButton.style.backgroundColor = "rgb(15, 160, 206)";
 
     }
 
     // if on the last page, do not show the next button, but show the submit button
     if (currentSlide === slides.length-1){
 
-        nextButton.style.display = "none";
-        submitButton.style.display = "inline-block";
+        nextButton.style.backgroundColor = "lightgrey";
+        nextButton.disabled = true;
+        if (document.getElementById('quizContainer').submitted == true){
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = "lightgrey";
+        }
+        else {
+            submitButton.disabled = false;
+            submitButton.style.backgroundColor = "rgb(15, 160, 206)";
+        }
 
     }
     else{
 
-        nextButton.style.display = "inline-block";
-        submitButton.style.display = "none";
+        nextButton.style.backgroundColor = "rgb(15, 160, 206)";
+        nextButton.disabled = false;
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = "lightgrey";
 
     }
 
