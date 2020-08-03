@@ -6,6 +6,7 @@ body{
 .quizContainer{
 	position: relative;
 	max-width: 700px;
+	width: 100%;
 	text-align: center;
 	margin: 30px 30px 30px 30px;
 	padding: 20px 5px 20px 5px;
@@ -89,7 +90,8 @@ canvas{
 	min-width: 70px;
 	display: flex;
     align-items: center;
-    justify-content: center;
+	justify-content: center;
+	margin: 5px 20px 5px 20px;
 }
 .button:hover{
 	background-color: #38a;
@@ -195,8 +197,17 @@ canvas{
 	  display: flex;
 	  justify-content: space-around;
 	  align-items: flex-end;
+	  flex-grow: 0;
+	  flex-shrink: 2;
+	  flex-wrap: wrap
   }
 
+  .bottom-wrapper {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: auto;
+}
   .progress-container { 
 	  position: relative;
 	  width: 120px;

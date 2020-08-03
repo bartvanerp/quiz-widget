@@ -59,13 +59,14 @@ function buildQuiz(questions, options){
     );
 
     // wrapper for buttons and progressbar
-    output.push(`<div class="buttons-wrapper">`);
+    output.push(`<div class="bottom-wrapper">`);
 
     // append navigation and submission buttons
     output.push(
-        `<button id="previous" class="button button-previous"><svg class="button-icon"><use xlink:href="svg/angle-left.svg#example"></use></svg> previous </button>
+        `<div class="buttons-wrapper">
+        <button id="previous" class="button button-previous"><svg class="button-icon"><use xlink:href="svg/angle-left.svg#example"></use></svg> previous </button>
         <button id="next" class="button button-next"> next <svg class="button-icon"><use xlink:href="svg/angle-right.svg#example"></use></svg></button>
-        <button id="submit" class="button button-submit"> submit </button>`
+        <button id="submit" class="button button-submit"> submit </button></div>`
     );
 
     // append progress bar
