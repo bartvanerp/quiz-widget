@@ -87,11 +87,11 @@ canvas{
 	padding: 0px;
 	cursor: pointer;
 	min-height: 40px;
-	min-width: 70px;
+	min-width: 120.6px;
 	display: flex;
     align-items: center;
 	justify-content: center;
-	margin: 5px 20px 5px 20px;
+	margin: 5px 5px 5px 5px;
 }
 .button:hover{
 	background-color: #38a;
@@ -198,7 +198,7 @@ canvas{
 	  justify-content: space-around;
 	  align-items: flex-end;
 	  flex-grow: 0;
-	  flex-shrink: 2;
+	  flex-shrink: 1;
 	  flex-wrap: wrap
   }
 
@@ -209,6 +209,7 @@ canvas{
 	width: auto;
 }
   .progress-container { 
+	  flex-shrink: 0;
 	  position: relative;
 	  width: 120px;
 	  height: 120px;
