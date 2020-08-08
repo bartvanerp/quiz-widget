@@ -1,6 +1,7 @@
 export { buildQuiz as default };
 
 import shuffle from "../utils/shuffle.js"
+import buildAnswers from "../quiz/buildanswers.js"
 
 function buildQuiz(questions, options){
 
@@ -16,21 +17,8 @@ function buildQuiz(questions, options){
     questions.forEach(
         (currentQuestion, questionNumber) => {
 
-            // variable to store the list of possible answers
-            const answers = [];
-
             // and for each available answer...
-            for (var letter in currentQuestion.answers) {
-                
-                // ... add an HTML radio button
-                answers.push(
-                    `<label class="answer">
-                        <span class="answer-text">${currentQuestion.answers[letter]}</span>
-                        <input type="radio" class="answer-button" name="question${questionNumber}" value="${letter}">
-                        <span class="checkmark"></span>
-                    </label>`
-                );
-            }
+            const answers = buildAnswers(currentQuestion, questionNumber)
 
             // get number of points of the question
             let numPoints = ((typeof currentQuestion.points === "undefined" || currentQuestion.points === 1) ? "1 pt" : currentQuestion.points+" pts");

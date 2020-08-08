@@ -120,7 +120,6 @@ canvas{
 .answer {
 	display: block;
 	position: relative;
-	padding-left: 35px;
 	margin-bottom: 12px;
 	cursor: pointer;
 	font-size: 18px;
@@ -129,14 +128,17 @@ canvas{
 	-ms-user-select: none;
 	user-select: none;
 }
+.answer-mc {
+	padding-left: 35px;
+}
   
-.answer label{
+.answer-mc label{
 	display: inline-block;
 	vertical-align: middle;
 }
 
 /* Hide the browser's default radio button */
-.answer input {
+.answer-mc input[type=radio] {
 	position: absolute;
 	opacity: 0;
 	cursor: pointer;
@@ -162,12 +164,12 @@ canvas{
 }
   
 /* On mouse-over, add a grey background color */
-  .answer:hover input ~ .checkmark {
+  .answer-mc:hover input ~ .checkmark {
 	background-color: ccc;
 }
   
   /* When the radio button is checked, add a blue background */
-  .answer input:checked ~ .checkmark {
+  .answer-mc input:checked ~ .checkmark {
 	background-color:  rgb(15, 160, 206);
   }
   
@@ -179,12 +181,12 @@ canvas{
   }
   
   /* Show the indicator (dot/circle) when checked */
-  .answer input:checked ~ .checkmark:after {
+  .answer-mc input:checked ~ .checkmark:after {
 	display: block;
   }
   
   /* Style the indicator (dot/circle) */
-  .answer .checkmark:after {
+  .answer-mc .checkmark:after {
 	top: 7px;
 	left: 7.5px;
 	width: 6px;
@@ -255,3 +257,11 @@ canvas{
 	position: relative;
 	display: inline-block;
 }
+.input-answer-numerical {
+	min-height: 20px;
+	padding: 12px 20px;
+	margin: 0px 0;
+	display: block;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}	

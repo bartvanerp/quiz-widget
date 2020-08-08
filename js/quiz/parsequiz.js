@@ -150,8 +150,13 @@ function parseVariables(questions){
                 item.question = replaceAll(item.question, "<"+key+">", value);
 
                 // ...and answers
-                for (var [answer_key, answer_value] of Object.entries(item.answers)) {
-                    item.answers[answer_key] = replaceAll(answer_value, "<"+key+">", value);
+                if (item.type === "multiple-choice"){
+                    for (var [answer_key, answer_value] of Object.entries(item.answers)) {
+                        item.answers[answer_key] = replaceAll(answer_value, "<"+key+">", value);
+                    }
+                }
+                else if (item.type === "numerical"){
+                    item.correctAnswer = replaceAll(item.correctAnswer, "<"+key+">", value);
                 }
             }
         

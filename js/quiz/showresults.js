@@ -17,6 +17,10 @@ function showResults(questions, options){
     buttons.forEach( ( currentButton ) => {
         currentButton.disabled = true;
     });
+    const forms = questionsContainer.querySelectorAll('.input-answer-numerical');
+    forms.forEach( ( currentForm ) => {
+        currentForm.disabled = true;
+    });
 
     // change submit button
     document.getElementById("submit").disabled = true;
@@ -33,48 +37,89 @@ function showResults(questions, options){
     // for each question
     questions.forEach( (currentQuestion, questionNumber) => {
 
-        // find selected answer
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
         // add to the number of available points
         numPointsAvailable += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
-
-        // if answer is correct
-        if (userAnswer == currentQuestion.correctAnswer){
         
-            // add to the number of correct answers
-            numPointsObtained += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
+        // multiple choice
+        if (currentQuestion.type == "multiple-choice"){
 
-            // color the answer green
-            answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
+            // find selected answer
+            const answerContainer = answerContainers[questionNumber];
+            const selector = `input[name=question${questionNumber}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-        }
-        // else if the answer is wrong or blank
-        else{
-
-            // color the answer button red if the answer is wrong
-            if (typeof(answerContainer.querySelectorAll("span.checkmark")[userAnswer-1]) !== "undefined"){
-                answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(235, 45, 57)";
-            }
-            // color all answers orange if no answer is submitted
-            else{
-                answerContainer.querySelectorAll("span.checkmark").forEach(checkmark => {
-                    checkmark.style.backgroundColor = "rgb(230, 140, 30)";
-                });
-            }
-
-            // color the correct answer green
-            if (options.showCorrectAnswer == true){
-                answerContainer.querySelectorAll("span.checkmark")[currentQuestion.correctAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
-            }
+            // if answer is correct
+            if (userAnswer == currentQuestion.correctAnswer){
             
+                // add to the number of correct answers
+                numPointsObtained += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
+
+                // color the answer green
+                answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
+
+            }
+            // else if the answer is wrong or blank
+            else{
+
+                // color the answer button red if the answer is wrong
+                if (typeof(answerContainer.querySelectorAll("span.checkmark")[userAnswer-1]) !== "undefined"){
+                    answerContainer.querySelectorAll("span.checkmark")[userAnswer-1].style.backgroundColor = "rgb(235, 45, 57)";
+                }
+                // color all answers orange if no answer is submitted
+                else{
+                    answerContainer.querySelectorAll("span.checkmark").forEach(checkmark => {
+                        checkmark.style.backgroundColor = "rgb(230, 140, 30)";
+                    });
+                }
+
+                // color the correct answer green
+                if (options.showCorrectAnswer == true){
+                    answerContainer.querySelectorAll("span.checkmark")[currentQuestion.correctAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
+                }
+                
+            }
+        }
+
+        // numerical
+        else if (currentQuestion.type == "numerical"){
+
+            // find selected answer
+            const answerContainer = answerContainers[questionNumber];
+            const selector = `input[name=question${questionNumber}]`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+            // if answer is correct
+            if (Math.abs(parseFloat(userAnswer)-parseFloat(currentQuestion.correctAnswer)) < currentQuestion.tolerance){
+            
+                // add to the number of correct answers
+                numPointsObtained += ((typeof currentQuestion.points === "undefined") ? 1 : currentQuestion.points);
+
+                // color the answer green
+                answerContainer.querySelectorAll("input.input-answer-numerical")[0].style.border = "2px solid rgb(40, 240, 100)";
+
+            }
+            // else if the answer is wrong or blank
+            else{
+
+                // color the answer button red if the answer is wrong
+                if (userAnswer.length != 0){
+                    answerContainer.querySelectorAll("input.input-answer-numerical")[0].style.border = "2px solid rgb(235, 45, 57)";
+                }
+                // color all answers orange if no answer is submitted
+                else{
+                    answerContainer.querySelectorAll("input.input-answer-numerical")[0].style.border = "2px solid rgb(230, 140, 30)";
+                }
+
+                // color the correct answer green
+                //if (options.showCorrectAnswer == true){
+                //    answerContainer.querySelectorAll("span.checkmark")[currentQuestion.correctAnswer-1].style.backgroundColor = "rgb(40, 240, 100)";
+                //}
+                
+            }
+
         }
 
     });
-
-    // get total number of available points
 
 
     // show the number of correct answers out of the total number of questions
