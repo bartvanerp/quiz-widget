@@ -3,7 +3,7 @@ export { buildQuiz as default };
 import shuffle from "../utils/shuffle.js"
 import buildAnswers from "../quiz/buildanswers.js"
 
-function buildQuiz(questions, options){
+function buildQuiz(questions, options, currentQuiz){
 
     // variable to store the HTML output 
     const output = [];
@@ -18,14 +18,14 @@ function buildQuiz(questions, options){
         (currentQuestion, questionNumber) => {
 
             // and for each available answer...
-            const answers = buildAnswers(currentQuestion, questionNumber)
+            var answers = buildAnswers(currentQuestion, questionNumber)
 
             // get number of points of the question
             let numPoints = ((typeof currentQuestion.points === "undefined" || currentQuestion.points === 1) ? "1 pt" : currentQuestion.points+" pts");
 
             // add this question and its answer to the output
             output.push(
-                `<div class="slide">
+                `<div class="slide" nr=${questionNumber+1}>
                     <div class="question-nr"> <span> Question ${questionNumber+1} </span> <span class="question-nr-pts"> ${numPoints} </span> </div>
                     <div class="question"> ${currentQuestion.question} </div>
                     <div class="border-gradient"></div>
@@ -38,7 +38,7 @@ function buildQuiz(questions, options){
 
     // append results section
     output.push(
-        `<div id="results"></div>`
+        `<div id="results" class="results"></div>`
     );
 
     // end questions element
@@ -71,6 +71,6 @@ function buildQuiz(questions, options){
     );
 
     // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join('')
+    currentQuiz.innerHTML = output.join('')
 
 }

@@ -1,27 +1,25 @@
-export { showSlide, showNextSlide, showPreviousSlide, currentSlide };
+export { showSlide, showNextSlide, showPreviousSlide };
 
 import { updateProgressBarNext } from "./progressbar.js"
 
-// variables
-let currentSlide = 0;
-
-
-function showSlide(n){
+function showSlide(n, quiz){
 
     // variables  
-    const previousButton = document.getElementById("previous");
-    const nextButton = document.getElementById("next");
-    const submitButton = document.getElementById("submit");
-    const slides = document.querySelectorAll(".slide");
+    var previousButton = quiz.querySelector(".button-previous");
+    var nextButton = quiz.querySelector(".button-next");
+    var submitButton = quiz.querySelector(".button-submit");
+    var slides = quiz.querySelectorAll(".slide");
 
     // hide current slide
-    slides[currentSlide].classList.remove('active-slide');
-
+    if (quiz.querySelector(".active-slide") != null) {
+        quiz.querySelector(".active-slide").classList.remove('active-slide');
+    }
+    
     //show new slide 
-    slides[n].classList.add('active-slide');
+    slides[n-1].classList.add('active-slide');
 
     // update current slide number
-    currentSlide = n;
+    var currentSlide = n-1;
 
     // if on the first page, disable previous button
     if (currentSlide === 0){
@@ -42,7 +40,7 @@ function showSlide(n){
 
         nextButton.style.backgroundColor = "lightgrey";
         nextButton.disabled = true;
-        if (document.getElementById('quizContainer').submitted == true){
+        if (quiz.submitted == true){
             submitButton.disabled = true;
             submitButton.style.backgroundColor = "lightgrey";
         }
@@ -62,22 +60,28 @@ function showSlide(n){
     }
 
     // update progress bar
-    updateProgressBarNext(n+1, slides.length-1)
+    updateProgressBarNext(n, slides.length-1, quiz)
     
 }
 
 
-function showNextSlide(){
+function showNextSlide(quiz){
+
+    // get current slide
+    var currentSlide = quiz.querySelector(".active-slide").getAttribute("nr");
 
     // show next slide
-    showSlide(currentSlide + 1);
+    showSlide(parseInt(currentSlide) + 1, quiz);
 
 }
 
 
-function showPreviousSlide(){
+function showPreviousSlide(quiz){
+
+    // get current slide
+    var currentSlide = quiz.querySelector(".active-slide").getAttribute("nr");
 
     // show previous slide
-    showSlide(currentSlide - 1);
+    showSlide(parseInt(currentSlide) - 1, quiz);
 
 }

@@ -78,7 +78,7 @@ var questions = [
     }
   ];
 
-const options = {
+var options = {
   shuffleQuestions: true,
   shuffleAnswers: true,
   select: "all",

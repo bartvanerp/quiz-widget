@@ -1,18 +1,18 @@
 export { buildProgressBar, updateProgressBarNext, updateProgressBarSubmitted }
 
-function buildProgressBar(){
+function buildProgressBar(quiz){
 
     // fetch container for progress bar
-    const container = document.querySelector('.progress-container');
-    
+    var container = quiz.querySelector('.progress-container');
+
     // set quiz to be not completed
     container.completed = false;
 
     // fetch size of container
-    const containerSize = container.offsetWidth;
+    var containerSize = container.offsetWidth;
 
     // variable to store the HTML output 
-    const output = [];
+    var output = [];
 
     // create progress bar
     output.push(
@@ -40,13 +40,13 @@ function buildProgressBar(){
     container.innerHTML = output.join('');
 
     // initialize progress bar
-     initializeProgressBar()
+     initializeProgressBar(quiz)
 
 }
 
-function initializeProgressBar(){
+function initializeProgressBar(quiz){
 
-    const meters = document.querySelectorAll('.pb-meter');
+    const meters = quiz.querySelectorAll('.pb-meter');
 
     meters.forEach( (path) => {
       // Get the length of the path
@@ -70,7 +70,7 @@ function initializeProgressBar(){
     });
 
     // get text of progress bar
-    const progText = document.querySelectorAll('.pb-text');
+    const progText = quiz.querySelectorAll('.pb-text');
 
     progText.forEach( (text) => {
 
@@ -80,16 +80,16 @@ function initializeProgressBar(){
       });
 }
 
-function updateProgressBarNext(n, nr_questions){
+function updateProgressBarNext(n, nr_questions, quiz){
 
     // get progress bar container
-    const container = document.querySelector('.progress-container');
+    const container = quiz.querySelector('.progress-container');
     
     // if not completed, update progress bar
     if (container.completed == false) {
 
         // get progress meter element
-        const meters = document.querySelectorAll('.pb-meter');
+        const meters = quiz.querySelectorAll('.pb-meter');
 
         meters.forEach( (path) => {
             // Get the length of the path
@@ -114,7 +114,7 @@ function updateProgressBarNext(n, nr_questions){
         });
 
         // get text of progress bar
-        const progText = document.querySelectorAll('.pb-text');
+        const progText = quiz.querySelectorAll('.pb-text');
 
         progText.forEach( (text) => {
             // get current percentage
@@ -128,16 +128,16 @@ function updateProgressBarNext(n, nr_questions){
 }
 
 
-function updateProgressBarSubmitted(length){
+function updateProgressBarSubmitted(length, quiz){
 
     // get progress bar
-    const container = document.querySelector('.progress-container');
+    const container = quiz.querySelector('.progress-container');
 
     // set progress bar to be completed
     container.completed = true;
 
     // get progress meter
-    const meters = document.querySelectorAll('.pb-meter');
+    const meters = quiz.querySelectorAll('.pb-meter');
 
     meters.forEach( (path) => {
         // Get the length of the path
@@ -162,7 +162,7 @@ function updateProgressBarSubmitted(length){
       });
 
       // get text of progress bar
-      const progText = document.querySelectorAll('.pb-text');
+      const progText = quiz.querySelectorAll('.pb-text');
 
       progText.forEach( (text) => {
 
