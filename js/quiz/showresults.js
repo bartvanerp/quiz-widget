@@ -3,7 +3,7 @@ export { showResults as default };
 import { updateProgressBarSubmitted } from "./progressbar.js"
 import { StartConfetti, DeactivateConfetti } from "../utils/confetti.js"
 
-function showResults(questions, options, quiz){
+function showResults(questions, options, quiz, quizNumber){
 
     // get some elements
     var questionsContainer = quiz.querySelector(".questions");
@@ -126,9 +126,9 @@ function showResults(questions, options, quiz){
     // if 100% correct, CONFETTI
     if (options.confetti){
         if (numPointsObtained === numPointsAvailable){
-            StartConfetti();
+            StartConfetti(quiz, quizNumber);
             setTimeout(function(){
-                DeactivateConfetti();
+                DeactivateConfetti(quizNumber);
             }, 1500);    
         }
     }

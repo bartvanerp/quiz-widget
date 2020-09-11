@@ -7,20 +7,22 @@ import { buildProgressBar } from "./quiz/progressbar.js"
 
 // fetch quizes on the page
 var quizes = document.getElementsByClassName("quiz-container")
+var quizNumber = 0;
 
 // loop through quizes on the page
 for (let currentQuiz of quizes) {
 
     // create path to quiz file
     const quizPath = "./quizcontent/"+currentQuiz.getAttribute("file")
+    let quizNumberi = quizNumber;
 
     // parse questions and build quiz
     requirejs([quizPath], function(){
     
         // parse questions
-        var currentOptions = options
-        var currentQuestions = parseQuiz(questions, options)
-    
+        var currentOptions = options;
+        var currentQuestions = parseQuiz(questions, options);
+        
         // build quiz
         buildQuiz(currentQuestions, currentOptions, currentQuiz);
         buildProgressBar(currentQuiz);
@@ -35,13 +37,16 @@ for (let currentQuiz of quizes) {
         const submitButton = currentQuiz.querySelector('.button-submit');
         const nextButton = currentQuiz.querySelector('.button-next');
         const previousButton = currentQuiz.querySelector('.button-previous');
-    
+        
         // add event listener for button to display results 
-        submitButton.addEventListener('click', function(){showResults(currentQuestions, currentOptions, currentQuiz)});
+        submitButton.addEventListener('click', function(){showResults(currentQuestions, currentOptions, currentQuiz, quizNumberi)});
         nextButton.addEventListener('click', function(){showNextSlide(currentQuiz)});
         previousButton.addEventListener('click', function(){showPreviousSlide(currentQuiz)});
 
     });
+
+    quizNumber = quizNumber + 1;
+
 }
 
 
